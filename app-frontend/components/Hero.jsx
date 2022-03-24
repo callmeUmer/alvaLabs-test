@@ -1,19 +1,25 @@
-const Hero = () => (
-  <>
-    <h1 className="text-6xl font-bold">
-      Frontend Boilerplate React with <br />
-      <a className="text-blue-600" href="https://nextjs.org">
-        NextJS, TailwindCSS
-      </a>
-    </h1>
+function Hero({data}) {
+  
+  const checkAmount = (amount) => {
+    return amount > 0 ? "bg-success": "bg-danger"
+  }
+  
+  return (
+    <>
+      {data.map((trans) => {
+        const cls = `card mb-4 ${checkAmount(trans.amount)}`
+        return (
+          <div class={cls}>
+            <div class="card-body">
+              <h5 class="card-title">${trans.amount}</h5>
+              <p class="card-text">Account ID: {trans.account_id}</p>
+            </div>
+          </div>
+      )
+    })}
+    </>
+  )
+}
 
-    <p className="mt-3 text-2xl">
-      Get started by editing{' '}
-      <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-        app-frontend/pages/index.js
-      </code>
-    </p>
-  </>
-)
 
 export default Hero;
